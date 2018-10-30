@@ -10,21 +10,11 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response(Task::latest()->get(), 200);
     }
 
     /**
@@ -35,7 +25,14 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'text' => 'required',
+            'finished' => 'required|boolean',
+        ]);
+
+        $task = Task::create($data);
+
+        return response($task, 201);
     }
 
     /**
@@ -46,18 +43,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Task $task)
-    {
-        //
+        return response($task, 200);
     }
 
     /**
@@ -69,17 +55,27 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $data = $request->validate([
+            'text' => 'required',
+            'finished' => 'required|boolean',
+        ]);
+
+        $task->update($data);
+
+        return response($task, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Task  $task
+     * @param  \App\Task $task
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return response('Deleted Succesfully', 200);
     }
 }
