@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
-use App\User;
 use Auth;
 use DB;
 
@@ -32,14 +31,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'text' => 'required',
             'finished' => 'required|boolean'
         ]);
 
-        $data['user_id'] = Auth::user()->id();
-        dd($data);
-        $task = Task::create($data);
+        $task = Task::create([
+            'text' => $request->text,
+            'finished' => $request->finished,
+            'user_id' => Auth::user()->id
+        ]);
 
         return response($task, 201);
     }
@@ -64,12 +65,15 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $data = $request->validate([
+        $request->validate([
             'text' => 'required',
             'finished' => 'required|boolean',
         ]);
 
-        $task->update($data);
+        $task->update([
+            'text' => $request->text,
+            'finished' => $request->finished,
+        ]);
 
         return response($task, 200);
     }
@@ -85,6 +89,6 @@ class TaskController extends Controller
     {
         $task->delete();
 
-        return response('Deleted Succesfully', 200);
+        return response('Deleted Successfully', 200);
     }
 }
