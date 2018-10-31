@@ -47519,6 +47519,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['task', 'index'],
@@ -47579,7 +47616,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "card" }, [
     _c(
       "div",
       {
@@ -47590,74 +47627,99 @@ var render = function() {
             value: _vm.state.edit === false,
             expression: "state.edit === false"
           }
-        ],
-        staticClass: "flex items-center"
+        ]
       },
       [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.data.finished,
-              expression: "data.finished"
-            }
-          ],
-          attrs: { type: "checkbox" },
-          domProps: {
-            checked: Array.isArray(_vm.data.finished)
-              ? _vm._i(_vm.data.finished, null) > -1
-              : _vm.data.finished
-          },
-          on: {
-            click: _vm.updateTask,
-            change: function($event) {
-              var $$a = _vm.data.finished,
-                $$el = $event.target,
-                $$c = $$el.checked ? true : false
-              if (Array.isArray($$a)) {
-                var $$v = null,
-                  $$i = _vm._i($$a, $$v)
-                if ($$el.checked) {
-                  $$i < 0 && _vm.$set(_vm.data, "finished", $$a.concat([$$v]))
-                } else {
-                  $$i > -1 &&
-                    _vm.$set(
-                      _vm.data,
-                      "finished",
-                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                    )
+        _c("div", { staticClass: "card-header bg-light" }, [
+          _vm._v("\n            Progress:\n            "),
+          _c("div", { staticClass: "align-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-info btn-sm",
+                on: {
+                  click: function($event) {
+                    _vm.remove(_vm.index)
+                  }
                 }
-              } else {
-                _vm.$set(_vm.data, "finished", $$c)
-              }
-            }
-          }
-        }),
+              },
+              [_vm._v("Edit")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger btn-sm",
+                on: {
+                  click: function($event) {
+                    _vm.remove(_vm.index)
+                  }
+                }
+              },
+              [_vm._v("X")]
+            )
+          ])
+        ]),
         _vm._v(" "),
-        _c(
-          "p",
-          {
-            class: _vm.data.finished
-              ? "line-through text-green"
-              : "text-grey-darkest cursor-pointer hover:text-black hover:font-bold",
-            on: { click: _vm.startEdit }
-          },
-          [_vm._v(_vm._s(_vm.task.text))]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-outline-warning",
-            on: {
-              click: function($event) {
-                _vm.remove(_vm.index)
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "align-left" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.data.finished,
+                  expression: "data.finished"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.data.finished)
+                  ? _vm._i(_vm.data.finished, null) > -1
+                  : _vm.data.finished
+              },
+              on: {
+                click: _vm.updateTask,
+                change: function($event) {
+                  var $$a = _vm.data.finished,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 &&
+                        _vm.$set(_vm.data, "finished", $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        _vm.$set(
+                          _vm.data,
+                          "finished",
+                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                        )
+                    }
+                  } else {
+                    _vm.$set(_vm.data, "finished", $$c)
+                  }
+                }
               }
-            }
-          },
-          [_vm._v("Remove")]
-        )
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "h5",
+            { staticClass: "text-center", on: { click: _vm.startEdit } },
+            [_vm._v(_vm._s(_vm.task.text))]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "align-left" }, [
+            _vm._v("\n                Reward:\n            ")
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
       ]
     ),
     _vm._v(" "),
@@ -47671,55 +47733,108 @@ var render = function() {
             value: _vm.state.edit === true,
             expression: "state.edit === true"
           }
-        ],
-        staticClass: "flex items-center"
+        ]
       },
       [
-        _c("input", {
-          directives: [
+        _c("div", { staticClass: "delete-task card-header" }, [
+          _c(
+            "button",
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.data.text,
-              expression: "data.text"
-            }
-          ],
-          attrs: { placeholder: "Update Task" },
-          domProps: { value: _vm.data.text },
-          on: {
-            keyup: function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
+              staticClass: "btn btn-outline-danger btn-sm",
+              on: {
+                click: function($event) {
+                  _vm.remove(_vm.index)
+                }
               }
-              return _vm.updateTask($event)
             },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            [_vm._v("X")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body text-center" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.data.text,
+                expression: "data.text"
               }
-              _vm.$set(_vm.data, "text", $event.target.value)
+            ],
+            attrs: { placeholder: "Update Task" },
+            domProps: { value: _vm.data.text },
+            on: {
+              keyup: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.updateTask($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.data, "text", $event.target.value)
+              }
             }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            attrs: { disabled: _vm.data.text.length === 0 },
-            on: { click: _vm.updateTask }
-          },
-          [_vm._v("Update")]
-        ),
-        _vm._v(" "),
-        _c("button", { on: { click: _vm.cancelEdit } }, [_vm._v("Cancel")])
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-warning btn-sm",
+              attrs: { disabled: _vm.data.text.length === 0 },
+              on: { click: _vm.updateTask }
+            },
+            [_vm._v("Update")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-sm",
+              on: { click: _vm.cancelEdit }
+            },
+            [_vm._v("Cancel")]
+          ),
+          _vm._v(" "),
+          _c("hr")
+        ])
       ]
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "align-right" }, [
+      _c("button", { staticClass: "btn btn-outline-warning btn-md" }, [
+        _vm._v("Spend Energy:")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer bg-light" }, [
+      _c("div", { staticClass: "align-left" }, [
+        _vm._v("\n                Due:\n            ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "align-right" }, [
+        _c("button", { staticClass: "btn btn-secondary btn-sm" }, [
+          _vm._v("Subtasks v")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -47737,11 +47852,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", [
-      _c("h1", [_vm._v("Todo List")]),
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _c("h1", { staticClass: "text-center" }, [_vm._v("Tasks")]),
       _vm._v(" "),
-      _c("div", [
+      _c("div", { staticClass: "align-center" }, [
         _c("input", {
           directives: [
             {
@@ -47775,6 +47890,7 @@ var render = function() {
         _c(
           "button",
           {
+            staticClass: "btn btn-primary",
             attrs: { disabled: _vm.newTask.length === 0 },
             on: { click: _vm.addTask }
           },
