@@ -1,11 +1,45 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <h1 class="text-center">Tasks</h1>
-            <div class="align-center">
-                <input v-model="newTask" @keyup.enter="addTask" placeholder="Add Task">
-                <button class="btn btn-primary" @click="addTask" :disabled="newTask.length === 0">Add</button>
+            <h3 class="text-center">Create A Task</h3>
+            <div class="form-group align-center">
+                <input class="form-control" v-model="newTask" @keyup.enter="addTask" placeholder="Add Task">
+                <br />
+                <h5>Estimated Time</h5>
+                <div class="row">
+                <div class="col">
+                    <select class="form-control form-control-sm" id="time-hrs">
+                        <option> 0</option>
+                        <option> 1</option>
+                        <option> 2</option>
+                        <option> 3</option>
+                        <option> 4</option>
+                        <option> 5</option>
+                        <option> 6</option>
+                        <option> 7</option>
+                        <option> 8</option>
+                        <option> 9</option>
+                        <option> 10</option>
+                        <option> 11</option>
+                        <option> 12</option>
+                        <option> 13</option>
+                        <option> 14</option>
+                        <option> 15</option>
+                    </select>
+                    <h5>hours</h5>
+                </div>
+                <div class="col">
+                    <select class="form-control form-control-sm" id="time-mins">
+                        <option> 0</option>
+                        <option> 30</option>
+                    </select>
+                    <h5>minutes</h5>
+                </div>
             </div>
+                <br />
+                <button class="btn btn-primary btn-block" @click="addTask" :disabled="newTask.length === 0">Add</button>
+            </div>
+            <h2 class="text-center">Tasks</h2>
         </div>
         <div>
             <task-item v-for="(task, index) in tasks" :key="task.id" :task="task" :index="index"></task-item>
