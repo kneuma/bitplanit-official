@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Auth;
 
 class TaskController extends Controller
 {
@@ -28,6 +29,7 @@ class TaskController extends Controller
         $data = $request->validate([
             'text' => 'required',
             'finished' => 'required|boolean',
+            
         ]);
 
         $task = Task::create($data);
