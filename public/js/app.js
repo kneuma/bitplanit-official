@@ -47590,8 +47590,7 @@ var render = function() {
             value: _vm.state.edit === false,
             expression: "state.edit === false"
           }
-        ],
-        staticClass: "flex items-center"
+        ]
       },
       [
         _c("input", {
@@ -47635,21 +47634,14 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c(
-          "p",
-          {
-            class: _vm.data.finished
-              ? "line-through text-green"
-              : "text-grey-darkest cursor-pointer hover:text-black hover:font-bold",
-            on: { click: _vm.startEdit }
-          },
-          [_vm._v(_vm._s(_vm.task.text))]
-        ),
+        _c("p", { on: { click: _vm.startEdit } }, [
+          _vm._v(_vm._s(_vm.task.text))
+        ]),
         _vm._v(" "),
         _c(
           "button",
           {
-            staticClass: "btn btn-outline-warning",
+            staticClass: "btn btn-outline-danger",
             on: {
               click: function($event) {
                 _vm.remove(_vm.index)
@@ -47671,8 +47663,7 @@ var render = function() {
             value: _vm.state.edit === true,
             expression: "state.edit === true"
           }
-        ],
-        staticClass: "flex items-center"
+        ]
       },
       [
         _c("input", {
@@ -47737,7 +47728,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "text-center" }, [
     _c("div", [
       _c("h1", [_vm._v("Todo List")]),
       _vm._v(" "),
@@ -47775,6 +47766,7 @@ var render = function() {
         _c(
           "button",
           {
+            staticClass: "btn btn-primary",
             attrs: { disabled: _vm.newTask.length === 0 },
             on: { click: _vm.addTask }
           },

@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div class="text-center">
         <div>
             <h1>Todo List</h1>
             <div>
                 <input v-model="newTask" @keyup.enter="addTask" placeholder="Add Task">
-                <button @click="addTask" :disabled="newTask.length === 0">Add</button>
+                <button class="btn btn-primary" @click="addTask" :disabled="newTask.length === 0">Add</button>
             </div>
         </div>
         <div>

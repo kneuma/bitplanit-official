@@ -1,0 +1,25 @@
+.task-list{
+    width:30%;
+    height:auto;
+    min-height:400px;
+    background-color:rgb(203, 204, 205);
+    text-align:center;
+
+}
+
+.task{
+
+}
+
+.checkbox{
+    float:left;
+}
+
+.task-title{
+    text-align:left;
+    margin-left:50px;
+}
+
+.delete-task{
+    text-align:right;
+}

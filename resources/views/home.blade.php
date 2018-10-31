@@ -15,14 +15,19 @@
                     @endif
 
                     You are logged in!
+
+                    <div class="card">
+                        <div id="app" class="h-screen flex items-center justify-center bg-teal-lightest font-sans">
+                            <task-list></task-list>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-        <div id="app" class="h-screen flex items-center justify-center bg-teal-lightest font-sans">
-            <task-list></task-list>
-        </div>
+
 
 @endsection

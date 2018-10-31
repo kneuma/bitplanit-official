@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="flex items-center" v-show="state.edit === false">
+        <div v-show="state.edit === false">
             <input type="checkbox" v-model="data.finished" @click="updateTask">
-            <p :class="data.finished ? 'line-through text-green' : 'text-grey-darkest cursor-pointer hover:text-black hover:font-bold'" @click="startEdit">{{task.text}}</p>
-            <button class="btn btn-outline-warning" @click="remove(index)">Remove</button>
+            <p @click="startEdit">{{task.text}}</p>
+            <button class="btn btn-outline-danger" @click="remove(index)">Remove</button>
         </div>
-        <div class="flex items-center" v-show="state.edit === true">
+        <div v-show="state.edit === true">
             <input  v-model="data.text" @keyup.enter="updateTask" placeholder="Update Task">
             <button @click="updateTask" :disabled="data.text.length === 0">Update</button>
             <button @click="cancelEdit">Cancel</button>
