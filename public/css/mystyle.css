@@ -3,7 +3,8 @@
     height:auto;
     min-height:400px;
     background-color:rgb(203, 204, 205);
-    text-align:center;
+    padding:5%;
+
 
 }
 
@@ -11,15 +12,16 @@
 
 }
 
-.checkbox{
+.align-left{
     float:left;
+    padding-left:3%;
 }
 
-.task-title{
-    text-align:left;
-    margin-left:50px;
+.align-center{
+    text-align:center;
 }
 
-.delete-task{
+.align-right{
     text-align:right;
+    padding-right:3%;
 }

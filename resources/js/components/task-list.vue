@@ -1,8 +1,8 @@
 <template>
-    <div class="text-center">
-        <div>
-            <h1>Todo List</h1>
-            <div>
+    <div class="card">
+        <div class="card-header">
+            <h1 class="text-center">Tasks</h1>
+            <div class="align-center">
                 <input v-model="newTask" @keyup.enter="addTask" placeholder="Add Task">
                 <button class="btn btn-primary" @click="addTask" :disabled="newTask.length === 0">Add</button>
             </div>
