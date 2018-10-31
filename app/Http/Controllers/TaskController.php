@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Task;
+
 use Illuminate\Http\Request;
+use App\Task;
+use App\User;
 use Auth;
+use DB;
 
 class TaskController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,10 +34,11 @@ class TaskController extends Controller
     {
         $data = $request->validate([
             'text' => 'required',
-            'finished' => 'required|boolean',
-            
+            'finished' => 'required|boolean'
         ]);
 
+        $data['user_id'] = Auth::user()->id();
+        dd($data);
         $task = Task::create($data);
 
         return response($task, 201);
