@@ -22,6 +22,7 @@ class CreateTasksTable extends Migration
             $table->integer('hrs')->nullable;
             $table->integer('mins')->nullable;
             $table->integer('combined_time')->nullable;
+            $table->integer('description')->nullable;
             $table->date('due_date')->nullable;
             $table->string('avatar')->nullable;
             $table->boolean('priority')->default(false);
