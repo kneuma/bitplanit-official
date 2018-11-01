@@ -30,8 +30,10 @@
                 </div>
                 <div class="col">
                     <select class="form-control form-control-sm" id="time-mins">
-                        <option> 0</option>
+                        <option> 00</option>
+                        <option> 15</option>
                         <option> 30</option>
+                        <option> 45</option>
                     </select>
                     <h5>minutes</h5>
                 </div>

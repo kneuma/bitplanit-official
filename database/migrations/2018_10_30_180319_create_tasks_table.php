@@ -19,6 +19,13 @@ class CreateTasksTable extends Migration
             $table->longText('text');
             $table->boolean('finished')->default(false);
             $table->timestamps();
+            $table->integer('hrs')->nullable;
+            $table->integer('mins')->nullable;
+            $table->integer('combined_time')->nullable;
+            $table->date('due_date')->nullable;
+            $table->string('avatar')->nullable;
+            $table->boolean('priority')->default(false);
+            $table->boolean('in_progress')->default(false);
         });
     }
 
