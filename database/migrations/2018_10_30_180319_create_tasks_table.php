@@ -19,12 +19,11 @@ class CreateTasksTable extends Migration
             $table->longText('text');
             $table->boolean('finished')->default(false);
             $table->timestamps();
-            $table->integer('hrs')->nullable;
-            $table->integer('mins')->nullable;
-            $table->integer('combined_time')->nullable;
-            $table->integer('description')->nullable;
-            $table->date('due_date')->nullable;
-            $table->string('avatar')->nullable;
+            $table->integer('mins');
+            $table->integer('energy_req')->nullable();
+            $table->integer('description')->nullable();
+            $table->date('due_date')->nullable();
+            $table->string('avatar')->nullable();
             $table->boolean('priority')->default(false);
             $table->boolean('in_progress')->default(false);
         });

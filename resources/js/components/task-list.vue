@@ -1,45 +1,44 @@
 <template>
-    <div class="card">
-        <div class="card-header">
-            <h3 class="text-center">Create A Task</h3>
-            <div class="form-group align-center">
-                <input class="form-control" v-model="newTask" @keyup.enter="addTask" placeholder="Add Task">
-                <br />
-                <h5>Estimated Time</h5>
-                <div class="row">
-                <div class="col">
-                    <select class="form-control form-control-sm" id="time-hrs">
-                        <option> 0</option>
-                        <option> 1</option>
-                        <option> 2</option>
-                        <option> 3</option>
-                        <option> 4</option>
-                        <option> 5</option>
-                        <option> 6</option>
-                        <option> 7</option>
-                        <option> 8</option>
-                        <option> 9</option>
-                        <option> 10</option>
-                        <option> 11</option>
-                        <option> 12</option>
-                        <option> 13</option>
-                        <option> 14</option>
-                        <option> 15</option>
-                    </select>
-                    <h5>hours</h5>
+    <div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Create A Task</h3>
+
+                <div class="form-group align-center">
+                    <input class="form-control" v-model="newTask" name="text" placeholder="Add Task">
+                    <br />
                 </div>
-                <div class="col">
-                    <select class="form-control form-control-sm" id="time-mins">
-                        <option> 00</option>
-                        <option> 15</option>
-                        <option> 30</option>
-                        <option> 45</option>
+
+                <div class="form-group align-center">
+                    <label><h5>Estimated Time to Complete</h5></label>
+                    <select class="form-control form-control-sm" v-model="mins" name="mins">
+                        <option value="15"> 15mins</option>
+                        <option value="30"> 30mins</option>
+                        <option value="45mins"> 45mins</option>
+                        <option value="60"> 1 hr</option>
+                        <option value="75"> 1hr 15mins</option>
+                        <option value="90"> 1hr 30 mins</option>
+                        <option value="105"> 1hr 45mins</option>
+                        <option value="120"> 2hrs</option>
+                        <option value="135"> 2hrs 15mins</option>
+                        <option value="150"> 2hrs 30mins</option>
+                        <option value="165"> 2hrs 45mins</option>
+                        <option value="180"> 3hrs</option>
+                        <option value="195"> 3hrs 15mins</option>
+                        <option value="210"> 3hrs 30mins</option>
+                        <option value="225"> 3hrs 45mins</option>
+                        <option value="240"> 4hrs</option>
                     </select>
                     <h5>minutes</h5>
                 </div>
-            </div>
-                <br />
-                <button class="btn btn-primary btn-block" @click="addTask" :disabled="newTask.length === 0">Add</button>
+
+
+                <div class="form-group align-center">
+                    <br />
+                    <button class="btn btn-primary btn-block" @click="addTask" :disabled="newTask.length === 0">Add</button>
+                </div>
+
+
             </div>
             <h2 class="text-center">Tasks</h2>
         </div>
@@ -50,6 +49,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -59,6 +59,7 @@
             return{
                 tasks: [],
                 newTask: '',
+                mins:''
             }
         },
         created() {
@@ -85,10 +86,10 @@
                     t.tasks = data;
                   });
             },
-            createTask(text) {
+            createTask(text, mins) {
                 const t = this;
 
-                axios.post('/tasks', {text: text, finished: false})
+                axios.post('/tasks', {text: text, mins: mins, finished: false})
                     .then(({data}) => {
                         t.tasks.unshift(data);
                     });
@@ -97,8 +98,9 @@
                 const t = this;
 
                 if(t.newTask.length > 0) {
-                  t.createTask(t.newTask);
+                  t.createTask(t.newTask, t.mins);
                   t.newTask = '';
+                  t.mins = '';
                 }
             },
             updateTask(details) {

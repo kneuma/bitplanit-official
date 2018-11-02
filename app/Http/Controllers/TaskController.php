@@ -33,13 +33,15 @@ class TaskController extends Controller
     {
         $request->validate([
             'text' => 'required',
-            'finished' => 'required|boolean'
+            'finished' => 'required|boolean',
         ]);
 
         $task = Task::create([
             'text' => $request->text,
             'finished' => $request->finished,
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
+            'mins' => $request->mins
+
         ]);
 
         return response($task, 201);
@@ -73,6 +75,7 @@ class TaskController extends Controller
         $task->update([
             'text' => $request->text,
             'finished' => $request->finished,
+            'mins' => $request->mins
         ]);
 
         return response($task, 200);

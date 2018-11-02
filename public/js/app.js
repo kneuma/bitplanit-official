@@ -47398,13 +47398,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       tasks: [],
-      newTask: ''
+      newTask: '',
+      mins: ''
     };
   },
   created: function created() {
@@ -47433,10 +47436,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         t.tasks = data;
       });
     },
-    createTask: function createTask(text) {
+    createTask: function createTask(text, mins) {
       var t = this;
 
-      axios.post('/tasks', { text: text, finished: false }).then(function (_ref2) {
+      axios.post('/tasks', { text: text, mins: mins, finished: false }).then(function (_ref2) {
         var data = _ref2.data;
 
         t.tasks.unshift(data);
@@ -47446,8 +47449,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var t = this;
 
       if (t.newTask.length > 0) {
-        t.createTask(t.newTask);
+        t.createTask(t.newTask, t.mins);
         t.newTask = '';
+        t.mins = '';
       }
     },
     updateTask: function updateTask(details) {
@@ -47587,7 +47591,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       },
       data: {
         text: '',
+        mins: '',
         finished: false
+
       }
     };
   },
@@ -47596,6 +47602,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     t.data.text = t.task.text;
     t.data.finished = t.task.finished;
+    t.data.mins = t.task.mins;
   },
 
   methods: {
@@ -47873,59 +47880,136 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "text-center" }, [_vm._v("Create A Task")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group align-center" }, [
-        _c("input", {
-          directives: [
+  return _c("div", [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _c("h3", { staticClass: "text-center" }, [_vm._v("Create A Task")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group align-center" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newTask,
+                expression: "newTask"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { name: "text", placeholder: "Add Task" },
+            domProps: { value: _vm.newTask },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newTask = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("br")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group align-center" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "select",
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.newTask,
-              expression: "newTask"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { placeholder: "Add Task" },
-          domProps: { value: _vm.newTask },
-          on: {
-            keyup: function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.mins,
+                  expression: "mins"
+                }
+              ],
+              staticClass: "form-control form-control-sm",
+              attrs: { name: "mins" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.mins = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
-              return _vm.addTask($event)
             },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.newTask = $event.target.value
-            }
-          }
-        }),
+            [
+              _c("option", { attrs: { value: "15" } }, [_vm._v(" 15mins")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "30" } }, [_vm._v(" 30mins")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "45mins" } }, [_vm._v(" 45mins")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "60" } }, [_vm._v(" 1 hr")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "75" } }, [_vm._v(" 1hr 15mins")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "90" } }, [
+                _vm._v(" 1hr 30 mins")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "105" } }, [
+                _vm._v(" 1hr 45mins")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "120" } }, [_vm._v(" 2hrs")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "135" } }, [
+                _vm._v(" 2hrs 15mins")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "150" } }, [
+                _vm._v(" 2hrs 30mins")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "165" } }, [
+                _vm._v(" 2hrs 45mins")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "180" } }, [_vm._v(" 3hrs")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "195" } }, [
+                _vm._v(" 3hrs 15mins")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "210" } }, [
+                _vm._v(" 3hrs 30mins")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "225" } }, [
+                _vm._v(" 3hrs 45mins")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "240" } }, [_vm._v(" 4hrs")])
+            ]
+          ),
+          _vm._v(" "),
+          _c("h5", [_vm._v("minutes")])
+        ]),
         _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("h5", [_vm._v("Estimated Time")]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-block",
-            attrs: { disabled: _vm.newTask.length === 0 },
-            on: { click: _vm.addTask }
-          },
-          [_vm._v("Add")]
-        )
+        _c("div", { staticClass: "form-group align-center" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-block",
+              attrs: { disabled: _vm.newTask.length === 0 },
+              on: { click: _vm.addTask }
+            },
+            [_vm._v("Add")]
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("h2", { staticClass: "text-center" }, [_vm._v("Tasks")])
@@ -47954,69 +48038,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-control form-control-sm",
-            attrs: { id: "time-hrs" }
-          },
-          [
-            _c("option", [_vm._v(" 0")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 1")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 2")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 3")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 4")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 5")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 6")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 7")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 8")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 9")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 10")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 11")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 12")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 13")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 14")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 15")])
-          ]
-        ),
-        _vm._v(" "),
-        _c("h5", [_vm._v("hours")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-control form-control-sm",
-            attrs: { id: "time-mins" }
-          },
-          [
-            _c("option", [_vm._v(" 0")]),
-            _vm._v(" "),
-            _c("option", [_vm._v(" 30")])
-          ]
-        ),
-        _vm._v(" "),
-        _c("h5", [_vm._v("minutes")])
-      ])
-    ])
+    return _c("label", [_c("h5", [_vm._v("Estimated Time to Complete")])])
   }
 ]
 render._withStripped = true

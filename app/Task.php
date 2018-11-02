@@ -9,7 +9,14 @@ class Task extends Model
     protected $fillable = [
         'text',
         'finished',
-        'user_id'
+        'user_id',
+        'mins',
+        'combined_time',
+        'description',
+        'due_date',
+        'avatar',
+        'priority',
+        'in_progress'
     ];
 
     protected $casts = [

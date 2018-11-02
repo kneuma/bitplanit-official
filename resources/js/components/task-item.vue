@@ -60,7 +60,9 @@
         },
         data: {
             text: '',
+            mins: '',
             finished: false,
+
         }
       }
     },
@@ -69,6 +71,7 @@
 
       t.data.text = t.task.text;
       t.data.finished = t.task.finished;
+      t.data.mins = t.task.mins;
     },
     methods: {
       updateTask() {
