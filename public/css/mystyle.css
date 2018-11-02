@@ -5,7 +5,6 @@
     background-color:rgb(203, 204, 205);
     padding:5%;
 
-
 }
 
 .task{
@@ -24,4 +23,26 @@
 .align-right{
     text-align:right;
     padding-right:3%;
+}
+
+.avatar img{
+    min-width:300px;
+    max-width:300px;
+
+}
+
+@media screen and (max-width: 1000px) {
+  .avatar img{
+    width:100%;
+  }
+
+  .col, .align-right{
+      text-align:center;
+
+  }
+
+  .col{
+      min-width:100%;
+  }
+
 }

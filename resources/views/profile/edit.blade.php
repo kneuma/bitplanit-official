@@ -19,6 +19,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Date of Birth</label>
+
+                                <input class="form-control" type="date" name="birthday" value="{{ $user->birthday }}" placeholder="Your Birthday"/>
+
+                        </div>
+
+                        <div class="form-group">
                             <label>Location</label>
 
                                 <input class="form-control" name="location" value="{{ $user->location }}" placeholder="Your Location"/>
@@ -42,13 +49,6 @@
                         </div>
                         <br />
 
-
-                        <div class="form-group">
-                            <label>Location</label>
-
-                                <input class="form-control" name="location" value="{{ $user->location }}" placeholder="Your Location"/>
-
-                        </div>
 
                         <div class="form-group">
                            <label>Bio</label>

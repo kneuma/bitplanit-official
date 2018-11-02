@@ -12,6 +12,7 @@
                 <div class="form-group align-center">
                     <label><h5>Estimated Time to Complete</h5></label>
                     <select class="form-control form-control-sm" v-model="mins" name="mins">
+                    
                         <option value="15"> 15mins</option>
                         <option value="30"> 30mins</option>
                         <option value="45mins"> 45mins</option>

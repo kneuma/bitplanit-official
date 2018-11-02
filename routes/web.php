@@ -19,7 +19,8 @@ Route::apiResource('tasks', 'TaskController');
 
 Auth::routes();
 
+
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::get('profile/edit', 'ProfileController@edit')->name('profile-edit');
 Route::put('profile/{profile}', 'ProfileController@update');
-Route::get('profile/{profile}', 'ProfileController@show')->middleware('auth');
+Route::get('profile', 'ProfileController@show')->middleware('auth');
