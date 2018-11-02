@@ -2,7 +2,12 @@
 
 @section('content')
 
-<div class="jumbotron">
+<div class="jumbotron align-center">
+    <div class="align-left">
+
+    </div>
+
+    <img src="/imgs/default-avatar.png" width="200px">
 
 </div>
 <div class="container">
