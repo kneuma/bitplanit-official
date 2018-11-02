@@ -13,29 +13,27 @@
             <br />
             <br />
 
-        </div>
+        </div><!---End of col align right--->
 
         <div class="col align-center">
             <h3>{{ $user->username }}</h3>
             <div class="avatar">
                 <img src="/imgs/default-avatar.png">
-            </div>
+            </div><!---End of avatar--->
 
             <p>Bio: {{ $user->bio }}
-        </div>
+        </div><!---End of col align center--->
 
         <div class="col align-left">
             <h4>Occupation: {{ $user->occupation }}</h4>
             <br />
             <br />
             <h4>Website: <a href="{{ $user->website }}">Website: {{ $user->website }}</a></h4>
-        </div>
-    </div>
+        </div><!---End of col align left --->
+    </div><!---End of row--->
 
+</div><!---End of Jumbotron--->
 
-
-
-</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -46,7 +44,7 @@
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
-                        </div>
+                        </div><!---End of alert--->
                     @endif
 
                     You are logged in!
@@ -54,14 +52,14 @@
                     <div class="card">
                         <div id="app" class="h-screen flex items-center justify-center bg-teal-lightest font-sans">
                             <task-list></task-list>
-                        </div>
+                        </div><!---End of app--->
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                    </div><!---End of card--->
+                </div><!---End of card body---->
+            </div><!---End of card--->
+        </div><!---End of col md8--->
+    </div><!---End of row--->
+</div><!---End of Container--->
 
 
 
